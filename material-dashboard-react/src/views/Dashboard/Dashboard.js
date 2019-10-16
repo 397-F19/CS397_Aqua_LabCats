@@ -14,8 +14,11 @@ import ArrowUpward from "@material-ui/icons/ArrowUpward";
 import AccessTime from "@material-ui/icons/AccessTime";
 import Accessibility from "@material-ui/icons/Accessibility";
 import BugReport from "@material-ui/icons/BugReport";
+import EventIcon from '@material-ui/icons/Event';
+import ScheduleIcon from '@material-ui/icons/Schedule';
 import Code from "@material-ui/icons/Code";
 import Cloud from "@material-ui/icons/Cloud";
+
 // core components
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
@@ -40,68 +43,53 @@ export default function Dashboard() {
   return (
     <div>
       <GridContainer>
-        <GridItem xs={12} sm={12} md={6}>
+        <GridItem xs={12}>
           <CustomTabs
-            title="Tasks:"
+            title="Your Research Studies:"
             headerColor="primary"
             tabs={[
               {
-                tabName: "Bugs",
-                tabIcon: BugReport,
+                tabName: "Upcoming Studies",
+                tabIcon: EventIcon,
                 tabContent: (
-                  <Tasks
-                    checkedIndexes={[0, 3]}
-                    tasksIndexes={[0, 1, 2, 3]}
-                    tasks={bugs}
-                  />
+                  <Card>
+                    <CardBody>
+                      <Table
+                        tableHeaderColor="warning"
+                        tableHead={["ID", "Name", "Salary", "Country"]}
+                        tableData={[
+                          ["1", "Upcoming Study 1", "$36,738", "Niger"],
+                          ["2", "Upcoming Study 2", "$23,789", "Curaçao"],
+                          ["3", "Upcoming Study 3", "$56,142", "Netherlands"],
+                          ["4", "Upcoming Study 4", "$38,735", "Korea, South"]
+                        ]}
+                      />
+                    </CardBody>
+                  </Card>
                 )
               },
               {
-                tabName: "Website",
-                tabIcon: Code,
+                tabName: "Past Studies",
+                tabIcon: ScheduleIcon,
                 tabContent: (
-                  <Tasks
-                    checkedIndexes={[0]}
-                    tasksIndexes={[0, 1]}
-                    tasks={website}
-                  />
-                )
-              },
-              {
-                tabName: "Server",
-                tabIcon: Cloud,
-                tabContent: (
-                  <Tasks
-                    checkedIndexes={[1]}
-                    tasksIndexes={[0, 1, 2]}
-                    tasks={server}
-                  />
+                  <Card>
+                    <CardBody>
+                      <Table
+                        tableHeaderColor="warning"
+                        tableHead={["ID", "Name", "Salary", "Country"]}
+                        tableData={[
+                          ["1", "Past Study 1", "$36,738", "Niger"],
+                          ["2", "Past Study 2", "$23,789", "Curaçao"],
+                          ["3", "Past Study 3", "$56,142", "Netherlands"],
+                          ["4", "Past Study 4", "$38,735", "Korea, South"]
+                        ]}
+                      />
+                    </CardBody>
+                  </Card>
                 )
               }
             ]}
           />
-        </GridItem>
-        <GridItem xs={12} sm={12} md={6}>
-          <Card>
-            <CardHeader color="warning">
-              <h4 className={classes.cardTitleWhite}>Employees Stats</h4>
-              <p className={classes.cardCategoryWhite}>
-                New employees on 15th September, 2016
-              </p>
-            </CardHeader>
-            <CardBody>
-              <Table
-                tableHeaderColor="warning"
-                tableHead={["ID", "Name", "Salary", "Country"]}
-                tableData={[
-                  ["1", "Dakota Rice", "$36,738", "Niger"],
-                  ["2", "Minerva Hooper", "$23,789", "Curaçao"],
-                  ["3", "Sage Rodriguez", "$56,142", "Netherlands"],
-                  ["4", "Philip Chaney", "$38,735", "Korea, South"]
-                ]}
-              />
-            </CardBody>
-          </Card>
         </GridItem>
       </GridContainer>
     </div>
